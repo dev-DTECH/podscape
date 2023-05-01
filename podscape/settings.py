@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'corsheaders',
     'userauth',
     'player',
     'favourite'
@@ -49,7 +48,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'podscape.urls'
@@ -129,5 +127,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '')
 
 MEDIA_URL = '/media/'
 
-CSRF_TRUSTED_ORIGINS = ['https://ps.devdt.xyz/']
+# CSRF_TRUSTED_ORIGINS = ['https://ps.devdt.xyz/']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
