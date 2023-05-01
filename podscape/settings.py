@@ -127,5 +127,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '')
 
 MEDIA_URL = '/media/'
 
-# CSRF_TRUSTED_ORIGINS = ['https://ps.devdt.xyz/']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
