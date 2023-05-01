@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  django:
+    image: devdtech/podscape:0.01
+    build: .
+    ports:
+      - 80:8000
