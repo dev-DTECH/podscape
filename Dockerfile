@@ -1,10 +1,31 @@
-FROM python:3.10
+FROM node:18.12.1
+
+WORKDIR /app
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SUPERUSER_PASSWORD="admin"
 
-WORKDIR /code
+WORKDIR /app/frontend
+
+COPY ./frontend/package.json ./
+
+# Installing node packages
+RUN npm i
+
+COPY ./frontend ./
+# Building React app
+RUN npm run build
+
+WORKDIR /app
+
+FROM ubuntu:22.04
+
+RUN cp ./static/index.html ./templates/home.html
+
+#RUN sed -i 's/\/assets/\/static\/assets/g' templates/home.html
+
+FROM python:3.10
 
 COPY requirements.txt ./
 
