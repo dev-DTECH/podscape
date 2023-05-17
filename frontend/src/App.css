@@ -1,0 +1,317 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.app {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-start;
+}
+.sidebar {
+  /* height: ; */
+  width: 300px;
+  background: rgb(55, 60, 81);
+  background: -moz-linear-gradient(
+    187deg,
+    rgba(55, 60, 81, 1) 35%,
+    rgba(53, 47, 74, 1) 67%
+  );
+  background: -webkit-linear-gradient(
+    187deg,
+    rgba(55, 60, 81, 1) 35%,
+    rgba(53, 47, 74, 1) 67%
+  );
+  background: linear-gradient(
+    187deg,
+    rgba(55, 60, 81, 1) 35%,
+    rgba(53, 47, 74, 1) 67%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#373c51",endColorstr="#352f4a",GradientType=1);
+  border-right: 1px solid rgb(96, 96, 96);
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30px;
+  /* padding-top: 30px; */
+  gap: 0.5rem;
+  margin-bottom: 2.5rem;
+  text-decoration: none;
+}
+.logo-pic {
+  height: 40px;
+  width: 40px;
+}
+.logo-heading {
+  font-family: "Nunito", sans-serif;
+  color: rgb(229, 234, 238);
+  font-size: 1.5rem;
+}
+.sidebar-list {
+  height: auto;
+  width: 100%;
+  list-style: none;
+}
+.sidebar-list .row {
+  padding-left: 25px;
+  /* margin-bottom: 1.5rem; */
+  height: auto;
+}
+.sidebar-list .row a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  text-decoration: none;
+  padding: 15px;
+  /* margin-left: 5px; */
+}
+.row-icon {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.row-icon svg {
+  color: rgb(206, 206, 206);
+}
+.row-head {
+  font-family: "Nunito", sans-serif;
+  color: rgb(206, 206, 206);
+  font-weight: 500;
+  font-size: 17px;
+}
+.link {
+  /* border: 1px solid white; */
+  transition: all 0.5ms ease-in-out;
+  padding: 5px 5px;
+  height: 50px;
+  width: 80%;
+}
+.active {
+  width: 90%;
+  border-radius: 30px;
+  background: rgb(34, 39, 61);
+  background: -moz-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: -webkit-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#22273d",endColorstr="#34343e",GradientType=1);
+  border: 0.5px solid rgba(94, 94, 94, 0.935);
+}
+
+.body {
+  width: calc(100vw - 300px);
+  overflow-y: scroll;
+  background: rgb(24, 27, 40);
+  background: -moz-linear-gradient(
+    129deg,
+    rgba(24, 27, 40, 1) 35%,
+    rgba(38, 38, 42, 1) 73%
+  );
+  background: -webkit-linear-gradient(
+    129deg,
+    rgba(24, 27, 40, 1) 35%,
+    rgba(38, 38, 42, 1) 73%
+  );
+  background: linear-gradient(
+    129deg,
+    rgba(24, 27, 40, 1) 35%,
+    rgba(38, 38, 42, 1) 73%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#181b28",endColorstr="#26262a",GradientType=1);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0.5px solid rgba(94, 94, 94, 0.935);
+  height: 50px;
+  border-radius: 30px;
+  gap: 0.5rem;
+  padding: 15px;
+  background: rgb(34, 39, 61);
+  background: -moz-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: -webkit-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#22273d",endColorstr="#34343e",GradientType=1);
+}
+a .search-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.search-box {
+  border: none;
+  background-color: transparent;
+  width: 300px;
+  height: 20px;
+}
+.search-box:focus {
+  outline: none;
+  color: rgb(200, 200, 200);
+  font-family: "Nunito", sans-serif;
+  font-size: 15px;
+}
+.search-box::placeholder {
+  color: rgb(200, 200, 200);
+  font-family: "Nunito", sans-serif;
+  font-size: 1rem;
+}
+.search-icon {
+  color: rgb(200, 200, 200);
+}
+
+.account {
+  color: rgb(200, 200, 200);
+  height: 40px !important;
+  width: 40px !important;
+}
+.account:hover{
+  transform: scale(0.9);
+  transition: all 0.3s ease-in-out;
+}
+.new-release{
+  /* margin-top: 1rem; */
+  padding: 30px;
+  color: rgb(200, 200, 200);
+  font-family: "Nunito", sans-serif;
+}
+.card{
+  display: flex;
+  flex-direction: column;
+  border: .5px solid rgba(94, 94, 94, 0.935);
+  display: inline-block;
+  padding: 20px;
+  background: rgb(34, 39, 61);
+  background: -moz-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: -webkit-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#22273d",endColorstr="#34343e",GradientType=1);
+  border-radius: 35px;
+  margin-left: 2rem;
+}
+.card-pic:hover {
+  transform: scale(0.95);
+  transition: all 0.3s ease-in-out;
+}
+
+.card-pic{
+  aspect-ratio: 1/1;
+  width: 250px;
+  border-radius: 25px;
+  margin-bottom: .6rem;
+  /* border: .5px solid rgba(94, 94, 94, 0.935); */
+  cursor: pointer;
+}
+.wrap{
+  display: flex;
+  /* justify-content: space-between; */
+  gap: 1rem;
+  align-items: center;
+}
+.category{
+  font-family: 'Lato', sans-serif;;
+  color: #8952ed;
+  font-size: .7rem;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+}
+.card-header{
+  /* margin-top: 6px; */
+  font-size: 1.5rem;
+  color: rgb(200, 200, 200);
+  font-weight: 500;
+  font-family: "Nunito",sans-serif;
+}
+.single{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: .5px solid rgba(94, 94, 94, 0.935);
+  background: rgb(34, 39, 61);
+  background: -moz-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: -webkit-linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  background: linear-gradient(
+    356deg,
+    rgba(34, 39, 61, 1) 53%,
+    rgba(52, 52, 62, 1) 97%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#22273d",endColorstr="#34343e",GradientType=1);
+  border-radius: 35px;
+  margin-left: 2.5rem;
+  height: 50px;
+  width: fit-content;
+  gap: .5rem;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.faatom{
+  height: 20px;
+  width: 20px;
+  font-weight: 300;
+}
+.sing-cat{
+  font-family: "Nunito",sans-serif;
+  color: rgb(200, 200, 200);
+}
+.love{
+  color: #8952ed;
+  cursor: pointer;
+}
+
