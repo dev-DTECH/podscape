@@ -1,6 +1,6 @@
 import React from "react";
 import "../App.css";
-import SingRecommend from "./singRecommend";
+import SingRecommend from "./SingRecommend";
 const recommended = () => {
   return (
     <div className="recommended">
