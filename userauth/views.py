@@ -6,10 +6,14 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
+    if(request.user.is_authenticated):
+        return redirect('/')
     return render(request, 'auth.html')
 
 
 def user_login(request):
+    if (request.user.is_authenticated):
+        return redirect('/')
     if request.method == 'POST':
         print(request.POST)
         email = request.POST.get("login-email",False)
@@ -26,6 +30,8 @@ def user_login(request):
 
 
 def user_register(request):
+    if (request.user.is_authenticated):
+        return redirect('/')
     if request.method == 'POST':
         print(request.POST)
         username = request.POST.get("register-name",False)

@@ -1,36 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podscape | Authentication</title>
+    <link rel="shortcut icon" href="/assets/images/logo.svg" type="image/x-icon">
+    <link rel="stylesheet" href="/assets/modal.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body>
-<header>
-    <h1>User Authentication</h1>
-</header>
-    <form action="login/" method="post">
-        {% csrf_token %}
+    <div class="container">
+        <input type="checkbox" id="flip" />
+        <div class="cover">
+            <div class="front">
+                <img src="/assets/images/banner.jpg" alt="" />
+                <div class="text">
+                    <span class="text-1">
+                        Listen up and tune in,<br /> it's time for your <br />podcasting spin!
+                    </span>
+                    <span class="text-2">Let's get connected</span>
+                </div>
+            </div>
+            <div class="back">
+                <img src="/assets/images/banner2.jpg" alt="" class="backImage" />
+                <div class="text">
+                    <!-- {/* <span class="text-1">
+                        Complete miles of journey <br /> with one step
+                    </span>
+                    <span class="text-2">Let's get started</span> */} -->
+                </div>
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">Log in</div>
+                    <form action="login/" method="post">
+                        {% csrf_token %}
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fa-regular fa-envelope" style="color: #7d2ae8;"></i>
+                                <input type="text" placeholder="Enter your email" name="login-email" required />
+                            </div>
+                            <div class="input-box">
+                                <i class="fa-solid fa-unlock-keyhole" style="color: #7d2ae8;"></i>
+                                <input type="password" placeholder="Enter your password" name="login-password" required />
+                            </div>
 
-        <fieldset>
-            <legend>Login</legend>
-
-        <label for="login-email">Email - </label><input type="email" id="login-email" name="login-email"><br/><br/>
-        <label for="login-password">Password - </label><input type="password" id="login-password" name="login-password"><br/><br/>
-            <input type="submit" value="Login">
-        </fieldset>
-
-    </form>
-    <form action="register/" method="post">
-        {% csrf_token %}
-
-        <fieldset>
-            <legend>Register</legend>
-        <label for="register-name">Name - </label><input id="register-name" name="register-name"><br/><br/>
-        <label for="register-email">Email - </label><input type="email" id="register-email" name="register-email"><br/><br/>
-        <label for="register-password">Password - </label><input type="password" id="register-password" name="register-password"><br/><br/>
-        <input type="submit" value="Register">
-        </fieldset>
-
-    </form>
+                            <!-- {/* <div class="text"><a href="#">Forgot password?</a></div> */} -->
+                            <div class="button input-box">
+                                <input type="submit" value="Login" />
+                            </div>
+                            <div class="text sign-up-text">
+                                Don't have an account?&nbsp;
+                                <label For="flip">Sigup now</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="signup-form">
+                    <div class="title">Sign up</div>
+                    <form action="register/" method="post">
+                        {% csrf_token %}
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fa-solid fa-user" style="color: #7d2ae8;"></i>
+                                <input type="text" placeholder="Enter your name" name="register-name" required />
+                            </div>
+                            <div class="input-box">
+                                <i class="fa-regular fa-envelope" style="color: #7d2ae8;"></i>
+                                <input type="text" placeholder="Enter your email" name="register-email" required />
+                            </div>
+                            <div class="input-box">
+                                <i class="fa-solid fa-unlock-keyhole" style="color: #7d2ae8;"></i>
+                                <input type="password" placeholder="Enter your password" name="register-password" required />
+                            </div>
+                            <div class="button input-box">
+                                <input type="submit" value="Register" />
+                            </div>
+                            <div class="text sign-up-text">
+                                Already have an account?&nbsp;
+                                <label For="flip">Login now</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

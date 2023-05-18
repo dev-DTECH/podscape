@@ -1,5 +1,5 @@
 from django.http import HttpResponse, FileResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from player.models import Podcast
 
@@ -11,6 +11,8 @@ def index(request):
         'user': request.user
         # 'fullname': request.user.get_full_name()
     }
+    if(not request.user.is_authenticated):
+        return redirect('auth/')
     return render(request, 'home.html', context)
 
 
@@ -20,9 +22,9 @@ class Upload:
 
 def upload(request):
     if (not request.user.is_authenticated):
-        return HttpResponse("user not found")
+        return redirect('auth/')
     if (not request.user.is_superuser):
-        return HttpResponse("User must be admin")
+        return redirect('/')
     if request.method == "POST":
         title = request.POST.get("title", False)
         author = request.POST.get("author", False)
