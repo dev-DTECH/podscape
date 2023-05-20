@@ -6,7 +6,7 @@ from django.contrib import messages
 
 # Create your views here.
 def index(request):
-    if(request.user.is_authenticated):
+    if (request.user.is_authenticated):
         return redirect('/')
     return render(request, 'auth.html')
 
@@ -16,8 +16,8 @@ def user_login(request):
         return redirect('/')
     if request.method == 'POST':
         print(request.POST)
-        email = request.POST.get("login-email",False)
-        password = request.POST.get("login-password",False)
+        email = request.POST.get("login-email", False)
+        password = request.POST.get("login-password", False)
         user = authenticate(request, username=email, password=password)
         if (not email or not password):
             return redirect('auth')
@@ -34,18 +34,23 @@ def user_register(request):
         return redirect('/')
     if request.method == 'POST':
         print(request.POST)
-        username = request.POST.get("register-name",False)
-        email = request.POST.get("register-email",False)
-        password = request.POST.get("register-password",False)
-        first_name = request.POST.get("register-name",False).split(" ",1)[0]
-        last_name = request.POST.get("register-name",False).split(" ",1)[1]
-        if(not username or not email or not password):
+        username = request.POST.get("register-name", False)
+        email = request.POST.get("register-email", False)
+        password = request.POST.get("register-password", False)
+        full_name = request.POST.get("register-name", False).split(" ", 1)
+        first_name = full_name[0]
+        last_name = full_name[1] if len(full_name) == 2 else ""
+        if (not username or not email or not password):
             return redirect('auth')
-        user = User.objects.create_user(email, email, password,first_name=first_name,last_name=last_name)
+        if User.objects.filter(username=email).first():
+            messages.error(request, "User already exist")
+            return redirect('home')
+        user = User.objects.create_user(email, email, password, first_name=first_name, last_name=last_name)
         login(request, user)
         user.save()
         return redirect('home')
     return redirect('auth')
+
 
 def user_logout(request):
     logout(request)
