@@ -26,5 +26,6 @@ urlpatterns = [
     path('auth/', include('userauth.urls')),
     path('upload/', views.upload),
     path('media/<str:pid>/',views.media),
-    path('thumbnail/<str:pid>/',views.thumbnail)
+    path('thumbnail/<str:pid>/',views.thumbnail),
+    path('search/',views.search)
 ]

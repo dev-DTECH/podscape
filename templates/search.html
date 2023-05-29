@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PodScape | Search</title>
+</head>
+<body>
+<header>
+    <h1>PodScape | Search</h1>
+</header>
+<ul>
+    {% for p in podcast %}
+        <li>
+            <a href="/player/{{ p.pid }}">{{ p.title }}</a>
+        </li>
+    {% endfor %}
+</ul>
+</body>
+</html>
