@@ -1,5 +1,7 @@
 FROM node:18.12.1
 
+ENV API_BASE_URL="https://podscape.devdt.in/"
+
 WORKDIR /app
 
 WORKDIR /app/frontend
@@ -24,7 +26,7 @@ RUN cp ./static/index.html ./templates/home.html
 FROM python:3.10
 
 ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+ENV PYTHONadmin/logout/admin/logout/UNBUFFERED=1
 ENV DJANGO_SUPERUSER_PASSWORD="admin"
 
 COPY requirements.txt ./

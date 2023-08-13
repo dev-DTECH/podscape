@@ -25,7 +25,8 @@ urlpatterns = [
     # path('auth/', include('django.contrib.auth.urls')),
     path('auth/', include('userauth.urls')),
     path('upload/', views.upload),
-    path('media/<str:pid>/',views.media),
-    path('thumbnail/<str:pid>/',views.thumbnail),
-    path('search/',views.search)
+    path('media/<str:pid>/', views.media),
+    path('thumbnail/<str:pid>/', views.thumbnail),
+    path('search/', views.search),
+    path('newRelease/', views.newRelease)
 ]

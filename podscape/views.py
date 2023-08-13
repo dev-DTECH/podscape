@@ -1,8 +1,12 @@
+import json
 import os
 
+from django.core.serializers import serialize
+from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse, FileResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.views.decorators.csrf import csrf_exempt
 
 from player.models import Podcast
 
@@ -65,12 +69,13 @@ def media(request, pid):
 
 
 def thumbnail(request, pid):
-    if not request.user.is_authenticated:
-        return JsonResponse({'message': 'User unauthorised'}, status=401)
+    # if not request.user.is_authenticated:
+    #     return JsonResponse({'message': 'User unauthorised'}, status=401)
     pc = Podcast.objects.get(pid=pid)
     thumbnail_file = open(pc.thumbnail.path, 'rb')
     response = FileResponse(thumbnail_file)
     return response
+
 
 def search(request):
     if not request.user.is_authenticated:
@@ -78,12 +83,21 @@ def search(request):
 
     if request.method == "GET":
         query = request.GET.get("query", False)
-        if(query):
+        if (query):
             podcast = Podcast.objects.filter(title__contains=query)
         else:
             podcast = Podcast.objects.all()
         print(podcast)
 
-        return render(request,'search.html',{'podcast': podcast})
+        return render(request, 'search.html', {'podcast': podcast})
 
+def newRelease(request):
+    # if not request.user.is_authenticated:
+    #     return JsonResponse({'message': 'User unauthorised'}, status=401)
+    if request.method == "GET":
+        podcast = Podcast.objects.values("pid", "title", "category").order_by("-createdAt")[:5]
 
+        serialized_data = json.dumps(list(podcast), cls=DjangoJSONEncoder)
+        serialized_data = json.loads(serialized_data)
+        return JsonResponse({"podcast": serialized_data})
+        # return render(request,'search.html',{'podcast': podcast})

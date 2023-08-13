@@ -12,6 +12,8 @@ class Podcast(models.Model):
     isVideo = models.BooleanField()
     media = models.FileField(upload_to='media/')
     thumbnail = models.ImageField(upload_to='media/thumbnail')
+    createdAt = models.DateTimeField(auto_now_add=True)
+    updateAt = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return str(self.pid) + ") " + self.title + " ~ " + self.author
