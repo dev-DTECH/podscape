@@ -1,7 +1,5 @@
 FROM node:18.12.1 as builder
 
-ENV API_BASE_URL="https://podscape.devdt.in/"
-
 WORKDIR /app
 
 WORKDIR /app/frontend
@@ -15,15 +13,6 @@ RUN yarn install
 COPY ./frontend ./
 # Building React app
 RUN yarn build
-
-#FROM ubuntu:22.04 as copyer
-#
-#WORKDIR /app
-#
-#RUN pwd
-#RUN cp ./static/index.html ./templates/home.html
-#
-#RUN sed -i 's/\/assets/\/static\/assets/g' templates/home.html
 
 FROM python:3.10
 
