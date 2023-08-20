@@ -9,11 +9,11 @@ const newRelease = () => {
 
     console.log(process.env.NODE_ENV)
     React.useEffect(() => {
-        axios.get("http://127.0.0.1:8000/newRelease/").then((res) => {
+        axios.get(window.location.origin + "/newRelease/").then((res) => {
             console.log(res.data?.podcast);
             setPodcast(res.data?.podcast);
         });
-    },[]);
+    }, []);
     if (!podcast) {
         return <div>loading...</div>;
     }
@@ -21,7 +21,8 @@ const newRelease = () => {
         <>
             <h3 className='new-release'>New Releases</h3>
             {
-                podcast.map((podcast) => <Card key={podcast.pid} pid={podcast.pid} favourite={true} category={podcast.category}
+                podcast.map((podcast) => <Card key={podcast.pid} pid={podcast.pid} favourite={true}
+                                               category={podcast.category}
                                                heading={podcast.title}/>
                 )
             }

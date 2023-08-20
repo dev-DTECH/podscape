@@ -1,4 +1,4 @@
-FROM node:18.12.1
+FROM node:18.12.1 as builder
 
 ENV API_BASE_URL="https://podscape.devdt.in/"
 
@@ -6,27 +6,29 @@ WORKDIR /app
 
 WORKDIR /app/frontend
 
-COPY ./frontend/package.json ./
+COPY ./frontend/package.json ./frontend/yarn.lock ./
 
 # Installing node packages
-RUN npm i
+RUN #npm install --global yarn
+RUN yarn install
 
 COPY ./frontend ./
 # Building React app
-RUN npm run build
+RUN yarn build
 
-WORKDIR /app
-
-FROM ubuntu:22.04
-
-RUN cp ./static/index.html ./templates/home.html
-
+#FROM ubuntu:22.04 as copyer
+#
+#WORKDIR /app
+#
+#RUN pwd
+#RUN cp ./static/index.html ./templates/home.html
+#
 #RUN sed -i 's/\/assets/\/static\/assets/g' templates/home.html
 
 FROM python:3.10
 
 ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONadmin/logout/admin/logout/UNBUFFERED=1
+ENV PYTHONUNBUFFERED=1
 ENV DJANGO_SUPERUSER_PASSWORD="admin"
 
 COPY requirements.txt ./
@@ -34,6 +36,9 @@ COPY requirements.txt ./
 RUN pip install -r requirements.txt
 
 COPY . .
+
+COPY --from=builder /app/static/index.html ./templates/home.html
+COPY --from=builder /app/static ./static
 
 RUN python manage.py makemigrations
 RUN python manage.py migrate

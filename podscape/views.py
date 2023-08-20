@@ -6,6 +6,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse, FileResponse, JsonResponse
 from django.shortcuts import render, redirect
 from django.db.models import Q
+from django.templatetags.static import static
 from django.views.decorators.csrf import csrf_exempt
 
 from player.models import Podcast
