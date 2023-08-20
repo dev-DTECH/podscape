@@ -37,6 +37,8 @@ RUN python manage.py makemigrations favourite
 RUN python manage.py migrate favourite
 RUN python manage.py createsuperuser --noinput --username admin@podscape.com --email admin@podscape.com
 
+RUN echo $CONFIG_SQL_URI
+
 EXPOSE 8000
 
 CMD ["python","manage.py","runserver","0.0.0.0:8000"]
